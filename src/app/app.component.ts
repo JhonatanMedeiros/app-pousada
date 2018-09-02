@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 
 @Component({
   template: `    
@@ -33,7 +32,7 @@ import { SignupPage } from '../pages/signup/signup';
 export class MyApp {
 
   // rootPage: any = TabsPage;
-  rootPage: any = SignupPage;
+  rootPage: any = LoginPage;
 
   @ViewChild(Nav) nav: Nav;
 

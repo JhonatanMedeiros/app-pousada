@@ -1,0 +1,48 @@
+page-signup {
+
+  ion-content { background: linear-gradient(#F2F2F2, #F2C94C) }
+
+  .item { background-color: transparent }
+
+  .row-divider {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.38);
+
+    &:before, &:after {
+      content: " ";
+      background-color: rgba(0, 0, 0, 0.38);
+      width: 40%;
+      height: 1px;
+      margin-top: 8px;
+    }
+    &:before { float: left }
+    &:after { float: right }
+  }
+
+  .login-btn {
+    background-color: #65554D;
+    color: white;
+  }
+
+  .facebook-btn {
+    background-color: #3F51B5;
+    color: white;
+  }
+
+  .google-btn {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.38);
+  }
+
+  .create-account {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.38);
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+}
