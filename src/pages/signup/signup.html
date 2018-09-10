@@ -1,6 +1,6 @@
 <ion-content padding>
 
-  <div class="logo">
+  <div class="logo" text-center>
     <img src="assets/imgs/logo.gif" alt="Logo">
   </div>
 
@@ -12,49 +12,71 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list>
+  <form (ngSubmit)="signup()" [formGroup]="form" autocomplete="off">
 
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <ion-list>
 
-    <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <!-- [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }" -->
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <!--<div ngxErrors="email" #emailErrors="ngxErrors">-->
+        <!--<div [ngxError]="['email', 'required']" [when]="['touched']">It should be a valid email</div>-->
+      <!--</div>-->
 
-  </ion-list>
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
 
-  <ion-grid>
+      <!-- [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }" -->
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
 
-    <ion-row>
-      <button ion-button block color="light" class="login-btn">CADASTRAR</button>
-    </ion-row>
+      <!--<div ngxErrors="password" #passwordErrors="ngxErrors">-->
+        <!--<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters</div>-->
+      <!--</div>-->
 
-    <ion-row>
-      <div class="row-divider">OU</div>
-    </ion-row>
+    </ion-list>
 
-    <ion-row>
-      <button ion-button block icon-start color="light" class="facebook-btn">
-        <ion-icon name="logo-facebook"></ion-icon>
-        FACEBOOK
-      </button>
-    </ion-row>
+    <ion-grid>
 
-    <ion-row>
-      <button ion-button block icon-start color="light" class="google-btn">
-        <ion-icon name="logo-google"></ion-icon>
-        GOOGLE
-      </button>
-    </ion-row>
+      <ion-row>
+        <button ion-button block color="light" class="login-btn" type="submit" [disabled]="!form.valid">
+          CADASTRAR
+        </button>
+      </ion-row>
 
-  </ion-grid>
+      <ion-row>
+        <div class="row-divider">OU</div>
+      </ion-row>
+
+      <ion-row>
+        <button ion-button block icon-start color="light" class="facebook-btn">
+          <ion-icon name="logo-facebook"></ion-icon>
+          FACEBOOK
+        </button>
+      </ion-row>
+
+      <ion-row>
+        <button ion-button block icon-start color="light" class="google-btn">
+          <ion-icon name="logo-google"></ion-icon>
+          GOOGLE
+        </button>
+      </ion-row>
+
+      <ion-row>
+        <div class="create-account" text-center>
+          <span (click)="goToLogin()">Já tenho uma conta</span>
+        </div>
+      </ion-row>
+
+    </ion-grid>
+
+  </form>
 
 </ion-content>

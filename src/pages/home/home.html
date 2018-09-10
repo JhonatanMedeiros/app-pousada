@@ -20,48 +20,60 @@
 
   <ion-list>
 
-    <ion-item>
-      <ion-label floating>Nome Completo</ion-label>
-      <ion-input type="text"></ion-input>
+    <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>
+
+    <ion-item (click)="logout()" *ngIf="auth.authenticated">
+      <ion-icon name="log-out" item-left></ion-icon>
+      Log out
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email"></ion-input>
+    <ion-item (click)="login()" *ngIf="!auth.authenticated">
+      <ion-icon name="log-in" item-left></ion-icon>
+      Log in
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Pessoas</ion-label>
-      <ion-select>
-        <ion-option>1</ion-option>
-        <ion-option>2</ion-option>
-        <ion-option>3</ion-option>
-      </ion-select>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label floating>Nome Completo</ion-label>-->
+      <!--<ion-input type="text"></ion-input>-->
+    <!--</ion-item>-->
 
-    <ion-item>
-      <ion-grid item-content>
-        <ion-row>
-          <ion-col>
-            <ion-label floating>Entrada</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
-          </ion-col>
-          <ion-col>
-            <ion-label floating>Saída</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label floating>Email</ion-label>-->
+      <!--<ion-input type="email"></ion-input>-->
+    <!--</ion-item>-->
 
-    <ion-item>
-      <ion-label floating>Mensagem</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label floating>Pessoas</ion-label>-->
+      <!--<ion-select>-->
+        <!--<ion-option>1</ion-option>-->
+        <!--<ion-option>2</ion-option>-->
+        <!--<ion-option>3</ion-option>-->
+      <!--</ion-select>-->
+    <!--</ion-item>-->
 
-    <ion-item text-center>
-      <button ion-button outline color="dark">Agendar</button>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-grid item-content>-->
+        <!--<ion-row>-->
+          <!--<ion-col>-->
+            <!--<ion-label floating>Entrada</ion-label>-->
+            <!--<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>-->
+          <!--</ion-col>-->
+          <!--<ion-col>-->
+            <!--<ion-label floating>Saída</ion-label>-->
+            <!--<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>-->
+          <!--</ion-col>-->
+        <!--</ion-row>-->
+      <!--</ion-grid>-->
+    <!--</ion-item>-->
+
+    <!--<ion-item>-->
+      <!--<ion-label floating>Mensagem</ion-label>-->
+      <!--<ion-textarea></ion-textarea>-->
+    <!--</ion-item>-->
+
+    <!--<ion-item text-center>-->
+      <!--<button ion-button outline color="dark">Agendar</button>-->
+    <!--</ion-item>-->
 
   </ion-list>
 </ion-content>

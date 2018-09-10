@@ -1,59 +1,74 @@
 <ion-content padding>
 
-  <div class="logo">
+  <div class="logo" text-center>
     <img src="assets/imgs/logo.gif" alt="Logo">
   </div>
 
-  <ion-list>
+  <form (submit)="login()" [formGroup]="loginForm" autocomplete="off">
 
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <ion-list>
 
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <!-- [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }" -->
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Lembrar</ion-label>
-      <ion-checkbox color="dark" checked="true"></ion-checkbox>
-    </ion-item>
+      <!--<div ngxErrors="email" #emailErrors="ngxErrors">-->
+        <!--<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">-->
+          <!--Insira um email valido.-->
+        <!--</div>-->
+      <!--</div>-->
 
-  </ion-list>
+      <!-- [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }" -->
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
 
-  <ion-grid>
+      <!--<div ngxErrors="password" #passwordErrors="ngxErrors">-->
+        <!--<div [ngxError]="['minlength', 'required']" [when]="['touched']">-->
+          <!--Informe 5 ou mais caracteres.-->
+        <!--</div>-->
+      <!--</div>-->
 
-    <ion-row>
-      <button ion-button block color="light" class="login-btn">Entrar</button>
-    </ion-row>
+    </ion-list>
 
-    <ion-row>
-      <div class="row-divider">OU</div>
-    </ion-row>
+    <ion-grid>
 
-    <ion-row>
-      <button ion-button block icon-start color="light" class="facebook-btn">
-        <ion-icon name="logo-facebook"></ion-icon>
-        FACEBOOK
-      </button>
-    </ion-row>
+      <ion-row>
+        <button ion-button block color="light" class="login-btn" type="submit" [disabled]="!loginForm.valid">
+          Entrar
+        </button>
+      </ion-row>
 
-    <ion-row>
-      <button ion-button block icon-start color="light" class="google-btn">
-        <ion-icon name="logo-google"></ion-icon>
-        GOOGLE
-      </button>
-    </ion-row>
+      <ion-row>
+        <div class="row-divider">OU</div>
+      </ion-row>
+
+      <ion-row>
+        <button ion-button block icon-start color="light" class="facebook-btn" (click)="loginInWithFacebook()">
+          <ion-icon name="logo-facebook"></ion-icon>
+          FACEBOOK
+        </button>
+      </ion-row>
+
+      <ion-row>
+        <button ion-button block icon-start color="light" class="google-btn" (click)="loginWithGoogle()">
+          <ion-icon name="logo-google"></ion-icon>
+          GOOGLE
+        </button>
+      </ion-row>
 
 
-    <ion-row>
-      <div class="create-account" text-center>
-        <span>Criar sua conta</span>
-      </div>
-    </ion-row>
+      <ion-row>
+        <div class="create-account" text-center>
+          <span (click)="goToSignup()">Criar sua conta</span>
+        </div>
+      </ion-row>
 
-  </ion-grid>
+    </ion-grid>
+
+  </form>
 
 </ion-content>
