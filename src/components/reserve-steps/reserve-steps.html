@@ -1,27 +1,13 @@
 <div class="steps-block">
   <div class="steps">
-    <div class="step done">
-      <div class="icon-block">
-        <span class="number">1</span>
-        <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
+    <ng-container *ngFor="let step of stepList; let i = index">
+      <div class="step" [class.done]="step.active">
+        <div class="icon-block">
+          <span class="number">{{i + 1}}</span>
+          <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
+        </div>
+        <span>{{step.name}}</span>
       </div>
-      <span>Estádia</span>
-    </div>
-    <div class="divider"></div>
-    <div class="step">
-      <div class="icon-block">
-        <span class="number">2</span>
-        <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
-      </div>
-      <span>Quartos</span>
-    </div>
-    <div class="divider"></div>
-    <div class="step">
-      <div class="icon-block">
-        <span class="number">3</span>
-        <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
-      </div>
-      <span>Finalizar</span>
-    </div>
+    </ng-container>
   </div>
 </div>

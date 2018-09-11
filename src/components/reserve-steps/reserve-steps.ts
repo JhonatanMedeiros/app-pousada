@@ -1,16 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'reserve-steps',
   templateUrl: 'reserve-steps.html'
 })
-export class ReserveStepsComponent {
+export class ReserveStepsComponent implements OnInit, OnChanges {
 
-  text: string;
+  @Input() stepList: any[] = [
+    { name: 'Estadia', active: false },
+    { name: 'Quartos', active: false },
+    { name: 'Finalizar', active: false }
+  ];
 
-  constructor() {
-    console.log('Hello ReserveStepsComponent Component');
-    this.text = 'Hello World';
+  @Input() activeStep: number = 2;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.isActive();
+  }
+
+  ngOnChanges() {
+   this.isActive();
+  }
+
+  isActive(): void {
+    this.stepList.forEach((value, index) => {
+      if (index < this.activeStep) {
+        value.active = true;
+      }
+    });
   }
 
 }
