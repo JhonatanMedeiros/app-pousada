@@ -1,0 +1,21 @@
+page-reserve {
+
+  ion-content { background: linear-gradient(#F2F2F2, #F2C94C) }
+
+  .item {
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  form {
+    margin-top: 50px;
+
+    .btn {
+      background-color: #65554D;
+      color: white;
+      height: 35px !important;
+      margin-top: 35px !important;
+    }
+
+  }
+}

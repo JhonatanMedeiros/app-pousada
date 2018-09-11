@@ -21,6 +21,9 @@ import { firebaseConfig } from '../config';
 
 import { MyApp } from './app.component';
 
+// Modules
+import { ComponentsModule } from '../components/components.module';
+
 // Pages
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -28,6 +31,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ReservePage } from '../pages/reserve/reserve';
 
 // Provider
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -40,7 +44,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ReservePage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     FormsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig.fire),
-    NgxErrorsModule
+    NgxErrorsModule,
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +64,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ReservePage,
   ],
   providers: [
     StatusBar,

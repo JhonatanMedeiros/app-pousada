@@ -12,6 +12,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
+import { ReservePage } from '../pages/reserve/reserve';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -68,21 +69,26 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.isAuth();
     });
+  }
 
+  isAuth(): void {
+    this.rootPage = ReservePage;
+    /*
     this.auth.afAuth.authState
       .subscribe(
         user => {
           if (user) {
-            this.rootPage = HomePage;
+            // this.rootPage = HomePage;
           } else {
-            this.rootPage = LoginPage;
+            // this.rootPage = LoginPage;
           }
         },
         () => {
           this.rootPage = LoginPage;
         }
-      );
+      );*/
   }
 
   openPage(menu) {

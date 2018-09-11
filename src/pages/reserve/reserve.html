@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reserva</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form autocomplete="off">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Data de entrada</ion-label>
+        <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Data de saída</ion-label>
+        <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <button ion-button block color="light" class="btn" type="submit">
+          PRÓXIMO
+        </button>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+
+    <reserve-steps></reserve-steps>
+
+</ion-content>
