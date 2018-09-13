@@ -1,5 +1,6 @@
 // Angular Imports
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Page Imports
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -16,10 +17,18 @@ export class ReservePage {
 
   activeStep: number = 0;
 
+  form: FormGroup;
+
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
-  ) { }
+    public navParams: NavParams,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = formBuilder.group({
+      dateStart: ['', Validators.compose([Validators.required])],
+      dateEnd: ['', Validators.compose([Validators.required])]
+    });
+  }
 
   ionViewDidLoad() { }
 

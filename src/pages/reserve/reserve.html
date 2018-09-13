@@ -10,18 +10,20 @@
 <ion-content>
 
   <ng-container *ngIf="activeStep <= 1">
-    <form autocomplete="off" (submit)="submitForm()">
+    <form [formGroup]="form" autocomplete="off" (submit)="submitForm()">
 
       <ion-list>
 
         <ion-item>
           <ion-label floating>Data de entrada</ion-label>
-          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM" formControlName="dateStart" required
+                        doneText="OK" cancelText="Cancelar"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label floating>Data de saída</ion-label>
-          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM" formControlName="dateEnd" required
+                        doneText="OK" cancelText="Cancelar"></ion-datetime>
         </ion-item>
 
 

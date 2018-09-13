@@ -36,6 +36,15 @@ import { ReservePage } from '../pages/reserve/reserve';
 // Provider
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 
+const ionicModuleConfig = {
+  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+    'Novembro', 'Dezembro'
+  ],
+  monthShortNames: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+  dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira'],
+  dayShortNames: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex']
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -51,7 +60,7 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, ionicModuleConfig),
     AngularFireModule.initializeApp(firebaseConfig.fire),
     NgxErrorsModule,
     ComponentsModule,
