@@ -1,7 +1,7 @@
 <div class="steps-block">
   <div class="steps">
     <ng-container *ngFor="let step of stepList; let i = index">
-      <div class="step" [class.done]="step.active">
+      <div class="step" [class.done]="step.active" (click)="selectStep(i + 1)">
         <div class="icon-block">
           <span class="number">{{i + 1}}</span>
           <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>

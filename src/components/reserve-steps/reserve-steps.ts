@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'reserve-steps',
@@ -12,7 +12,9 @@ export class ReserveStepsComponent implements OnInit, OnChanges {
     { name: 'Finalizar', active: false }
   ];
 
-  @Input() activeStep: number = 2;
+  @Input() activeStep: number = 0;
+
+  @Output() onSelectStep: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
@@ -26,10 +28,20 @@ export class ReserveStepsComponent implements OnInit, OnChanges {
 
   isActive(): void {
     this.stepList.forEach((value, index) => {
-      if (index < this.activeStep) {
-        value.active = true;
-      }
+      value.active = index < this.activeStep;
     });
+  }
+
+  selectStep(step): void {
+    if (this.activeStep === step) {
+      this.activeStep--
+    } else if (step < this.activeStep) {
+      this.activeStep = step - 1
+    } else {
+      this.activeStep = step;
+    }
+    this.isActive();
+    this.onSelectStep.emit(this.activeStep);
   }
 
 }
