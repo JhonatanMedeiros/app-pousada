@@ -8,6 +8,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReservePage {
 
+  activeStep: number = 0;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams

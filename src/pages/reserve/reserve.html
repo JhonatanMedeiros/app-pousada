@@ -9,33 +9,46 @@
 
 <ion-content>
 
-  <form autocomplete="off" *ngIf="false">
+  <ng-container *ngIf="activeStep <= 1">
+    <form autocomplete="off">
 
-    <ion-list>
+      <ion-list>
 
-      <ion-item>
-        <ion-label floating>Data de entrada</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
-      </ion-item>
+        <ion-item>
+          <ion-label floating>Data de entrada</ion-label>
+          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+        </ion-item>
 
-      <ion-item>
-        <ion-label floating>Data de saída</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
-      </ion-item>
+        <ion-item>
+          <ion-label floating>Data de saída</ion-label>
+          <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM"></ion-datetime>
+        </ion-item>
 
 
-      <ion-item>
-        <button ion-button block color="light" class="btn" type="submit">
-          PRÓXIMO
-        </button>
-      </ion-item>
+        <ion-item>
+          <button ion-button block color="light" class="btn" type="submit">
+            PRÓXIMO
+          </button>
+        </ion-item>
 
-    </ion-list>
+      </ion-list>
 
-  </form>
+    </form>
+  </ng-container>
 
-  <bedroom-card></bedroom-card>
+  <bedroom-card *ngIf="activeStep === 2"></bedroom-card>
 
-  <reserve-steps></reserve-steps>
+  <ng-container *ngIf="activeStep >= 3">
+    <div id="step-complete">
+      <div class="done-mark">
+        <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
+      </div>
+      <div class="done-text">
+        <span>Agendado com sucesso!</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <reserve-steps (onSelectStep)="activeStep = $event" [activeStep]="activeStep"></reserve-steps>
 
 </ion-content>

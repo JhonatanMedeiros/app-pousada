@@ -16,6 +16,41 @@ page-reserve {
       height: 35px !important;
       margin-top: 35px !important;
     }
+  }
 
+  #step-complete {
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    padding-top: 50%;
+
+    .done-text {
+      margin-top: 10px;
+      font-size: 1.3em;
+      span {
+        opacity: .8;
+      }
+    }
+
+    .done-mark {
+      height: 50px;
+      width: 50px;
+      background-color: #FFD765;
+      border-radius: 50%;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 auto;
+      position: relative;
+      .icon {
+        color: #C9A634;
+        top: 8px;
+        position: absolute;
+        left: 2px;
+        right: 0;
+        font-size: 2.4em;
+      }
+    }
   }
 }

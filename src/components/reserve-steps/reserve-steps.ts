@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'reserve-steps',
   templateUrl: 'reserve-steps.html'
 })
-export class ReserveStepsComponent implements OnInit, OnChanges {
+export class ReserveStepsComponent implements OnInit {
 
-  @Input() stepList: any[] = [
+  @Input() stepList: { name: string, active: boolean }[] = [
     { name: 'Estadia', active: false },
     { name: 'Quartos', active: false },
     { name: 'Finalizar', active: false }
   ];
 
-  @Input() activeStep: number = 0;
+  @Input() activeStep: number = 1;
 
-  @Output() onSelectStep: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onSelectStep: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -22,24 +22,14 @@ export class ReserveStepsComponent implements OnInit, OnChanges {
     this.isActive();
   }
 
-  ngOnChanges() {
-   this.isActive();
-  }
-
   isActive(): void {
     this.stepList.forEach((value, index) => {
-      value.active = index < this.activeStep;
+      value.active = index + 1 < this.activeStep;
     });
   }
 
-  selectStep(step): void {
-    if (this.activeStep === step) {
-      this.activeStep--
-    } else if (step < this.activeStep) {
-      this.activeStep = step - 1
-    } else {
-      this.activeStep = step;
-    }
+  selectStep(step: number): void {
+    this.activeStep = step;
     this.isActive();
     this.onSelectStep.emit(this.activeStep);
   }
