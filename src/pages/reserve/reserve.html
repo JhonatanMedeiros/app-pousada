@@ -10,7 +10,7 @@
 <ion-content>
 
   <ng-container *ngIf="activeStep <= 1">
-    <form autocomplete="off">
+    <form autocomplete="off" (submit)="submitForm()">
 
       <ion-list>
 
@@ -36,7 +36,7 @@
     </form>
   </ng-container>
 
-  <bedroom-card *ngIf="activeStep === 2"></bedroom-card>
+  <bedroom-card *ngIf="activeStep === 2" (onSelectCard)="selectRoom($event)"></bedroom-card>
 
   <ng-container *ngIf="activeStep >= 3">
     <div id="step-complete">

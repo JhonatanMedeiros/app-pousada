@@ -1,5 +1,11 @@
+// Angular Imports
 import { Component } from '@angular/core';
+
+// Page Imports
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+// Models
+import { BedRoom } from '../../models/bedRoom';
 
 @IonicPage()
 @Component({
@@ -16,5 +22,13 @@ export class ReservePage {
   ) { }
 
   ionViewDidLoad() { }
+
+  submitForm(): void {
+    this.activeStep = 2
+  }
+
+  selectRoom(bedroom: BedRoom): void {
+    this.activeStep = 3
+  }
 
 }

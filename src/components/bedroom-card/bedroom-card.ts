@@ -1,5 +1,5 @@
 // Angular Imports
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Models
 import { BedRoom } from '../../models/bedRoom';
@@ -18,9 +18,11 @@ export class BedroomCardComponent {
     { name: 'Quarto 5', description: 'Capacidade para 4 pessoas, TV, cama box de casal, sala com uma 1 cama box de solteiro com cama auxiliar...'}
   ];
 
+  @Output() onSelectCard: EventEmitter<BedRoom> = new EventEmitter<BedRoom>();
+
   constructor() { }
 
   reserve(room: BedRoom) {
-    console.log(room);
+    this.onSelectCard.emit(room);
   }
 }

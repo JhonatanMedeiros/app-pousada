@@ -12,7 +12,17 @@ export class ReserveStepsComponent implements OnInit {
     { name: 'Finalizar', active: false }
   ];
 
-  @Input() activeStep: number = 1;
+  // @Input() activeStep: number = 1;
+  _activeStep: number;
+  get activeStep(): number {
+    return this._activeStep;
+  }
+
+  @Input('activeStep')
+  set activeStep(value: number) {
+    this._activeStep = value;
+    this.isActive();
+  }
 
   @Output() onSelectStep: EventEmitter<number> = new EventEmitter<number>();
 
@@ -24,14 +34,14 @@ export class ReserveStepsComponent implements OnInit {
 
   isActive(): void {
     this.stepList.forEach((value, index) => {
-      value.active = index + 1 < this.activeStep;
+      value.active = index + 1 < this._activeStep;
     });
   }
 
   selectStep(step: number): void {
-    this.activeStep = step;
+    this._activeStep = step;
     this.isActive();
-    this.onSelectStep.emit(this.activeStep);
+    this.onSelectStep.emit(this._activeStep);
   }
 
 }
