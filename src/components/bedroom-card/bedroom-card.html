@@ -1,9 +1,9 @@
-<ion-card *ngFor="let room of bedRoomList">
+<ion-card *ngFor="let room of bedRoomList" (click)="cardDetail(room)">
   <img [src]="room.imgUrl || 'assets/imgs/room/quarto-hotel.jpg'"
        onerror="this.src='assets/imgs/room/quarto-hotel.jpg'"/>
   <ion-card-content>
     <ion-card-title>
-      {{room.title || 'Quarto Exemplo 1'}}
+      {{room.name || 'Quarto Exemplo 1'}}
     </ion-card-title>
     <p>
       {{room.description}}
@@ -11,7 +11,7 @@
   </ion-card-content>
   <ion-row>
     <ion-col>
-      <button ion-button color="light" float-right (click)="reserve(room)">Reservar</button>
+      <button ion-button color="light" float-right *ngIf="config?.showBtnRerve" (click)="reserve(room)">Reservar</button>
     </ion-col>
   </ion-row>
 </ion-card>

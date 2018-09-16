@@ -38,7 +38,7 @@
     </form>
   </ng-container>
 
-  <bedroom-card *ngIf="activeStep === 2" (onSelectCard)="selectRoom($event)"></bedroom-card>
+  <bedroom-card *ngIf="activeStep === 2" [config]="{ showBtnRerve: true }" (onReserveRoom)="selectRoom($event)"></bedroom-card>
 
   <ng-container *ngIf="activeStep >= 3">
     <div id="step-complete">

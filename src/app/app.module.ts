@@ -25,13 +25,14 @@ import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
 
 // Pages
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
 import { ReservePage } from '../pages/reserve/reserve';
+import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
 
 // Provider
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -45,16 +46,21 @@ const ionicModuleConfig = {
   dayShortNames: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex']
 };
 
+const COMPONENTS = [
+  HomePage,
+  TabsPage,
+  LoginPage,
+  SignupPage,
+  AboutPage,
+  ContactPage,
+  ReservePage,
+  AdminBedroomPage
+];
+
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    SignupPage,
-    ReservePage
+    ...COMPONENTS,
   ],
   imports: [
     BrowserModule,
@@ -68,13 +74,7 @@ const ionicModuleConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    LoginPage,
-    SignupPage,
-    ReservePage,
+    ...COMPONENTS
   ],
   providers: [
     StatusBar,

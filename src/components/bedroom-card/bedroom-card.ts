@@ -18,11 +18,19 @@ export class BedroomCardComponent {
     { name: 'Quarto 5', description: 'Capacidade para 4 pessoas, TV, cama box de casal, sala com uma 1 cama box de solteiro com cama auxiliar...'}
   ];
 
+  @Input() config: { showBtnRerve: boolean } = { showBtnRerve: false };
+
   @Output() onSelectCard: EventEmitter<BedRoom> = new EventEmitter<BedRoom>();
+
+  @Output() onReserveRoom: EventEmitter<BedRoom> = new EventEmitter<BedRoom>();
 
   constructor() { }
 
   reserve(room: BedRoom) {
+    this.onReserveRoom.emit(room);
+  }
+
+  cardDetail(room: BedRoom): void {
     this.onSelectCard.emit(room);
   }
 }
