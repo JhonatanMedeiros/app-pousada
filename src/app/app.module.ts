@@ -30,30 +30,33 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 // Pages
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 import { ReservePage } from '../pages/reserve/reserve';
-import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
+import { AdminPage } from '../pages/admin/admin';
 import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedroom-detail';
+import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
 
-const COMPONENTS = [
+
+const PAGES_COMPONENTS = [
   HomePage,
   TabsPage,
-  LoginPage,
-  SignupPage,
   AboutPage,
   ContactPage,
+  LoginPage,
+  SignupPage,
   ReservePage,
+  AdminPage,
   AdminBedroomPage,
-  AdminBedroomDetailPage
+  AdminBedroomDetailPage,
 ];
 
 @NgModule({
   declarations: [
     MyApp,
-    ...COMPONENTS,
+    ...PAGES_COMPONENTS
   ],
   imports: [
     BrowserModule,
@@ -62,12 +65,12 @@ const COMPONENTS = [
     IonicModule.forRoot(MyApp, ionicModuleConfig),
     AngularFireModule.initializeApp(firebaseConfig.fire),
     NgxErrorsModule,
-    ComponentsModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ...COMPONENTS
+    ...PAGES_COMPONENTS
   ],
   providers: [
     StatusBar,

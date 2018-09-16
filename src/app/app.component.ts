@@ -10,7 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
-import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
+import { AdminPage } from '../pages/admin/admin';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -46,6 +46,7 @@ export class MyApp {
     { name: 'Login', page: LoginPage },
     { name: 'Signup', page: SignupPage },
     { name: 'Home', page: HomePage },
+    { name: 'Admin', page: AdminPage },
   ];
 
   @ViewChild(Nav) nav: Nav;
@@ -68,7 +69,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.rootPage = AdminBedroomPage
+      this.rootPage = HomePage
       // this.isAuth();
     });
   }
