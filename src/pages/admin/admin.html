@@ -1,12 +1,54 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Administração</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      Gerência
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item (click)="goToPage()">
+        <ion-icon name="home" item-start></ion-icon>
+        Quartos
+      </button>
+
+      <button ion-item disabled>
+        <ion-icon name="book" item-start></ion-icon>
+        Reservas
+      </button>
+
+      <button ion-item disabled>
+        <ion-icon name="people" item-start></ion-icon>
+        Usuários
+      </button>
+
+      <button ion-item disabled>
+        <ion-icon name="contact" item-start></ion-icon>
+        Minha Conta
+      </button>
+
+      <button ion-item disabled>
+        <ion-icon name="settings" item-start></ion-icon>
+        Configurações
+      </button>
+
+      <button ion-item (click)="signOut()">
+        <ion-icon name="exit" item-start></ion-icon>
+        Sair
+      </button>
+
+    </ion-list>
+  </ion-card>
 
 </ion-content>

@@ -11,10 +11,11 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
 import { AdminPage } from '../pages/admin/admin';
+import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
+import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedroom-detail';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
-
 
 @Component({
   template: `    
@@ -47,6 +48,8 @@ export class MyApp {
     { name: 'Signup', page: SignupPage },
     { name: 'Home', page: HomePage },
     { name: 'Admin', page: AdminPage },
+    { name: 'Admin Bedroom', page: AdminBedroomPage },
+    { name: 'Admin Bedroom Detail', page: AdminBedroomDetailPage }
   ];
 
   @ViewChild(Nav) nav: Nav;
@@ -69,7 +72,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.rootPage = HomePage
+      this.rootPage = AdminPage
       // this.isAuth();
     });
   }
