@@ -4,7 +4,7 @@
     <img src="assets/imgs/logo.gif" alt="Logo">
   </div>
 
-  <form (submit)="login()" [formGroup]="loginForm" autocomplete="off">
+  <form (submit)="loginWithEmail()" [formGroup]="loginForm" autocomplete="off">
 
     <ion-list>
 
@@ -63,7 +63,7 @@
 
       <ion-row>
         <div class="create-account" text-center>
-          <span (click)="goToSignup()">Criar sua conta</span>
+          <span (click)="goToSignupPage()">Criar sua conta</span>
         </div>
       </ion-row>
 

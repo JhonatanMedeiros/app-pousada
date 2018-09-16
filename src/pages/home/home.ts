@@ -4,9 +4,11 @@ import { Component } from '@angular/core';
 // Ionic Imports
 import { MenuController, NavController } from 'ionic-angular';
 
+// Page
+import { LoginPage } from '../login/login';
+
 // Providers Imports
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
-import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',

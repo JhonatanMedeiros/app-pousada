@@ -19,19 +19,10 @@ export class AuthenticationProvider {
     private facebook: Facebook,
     private gplus: GooglePlus
   ) {
-    afAuth.authState.subscribe(user => {
+    afAuth.user.subscribe(user => {
+      console.log(user);
       this.user = user;
     });
-  }
-
-  signInWithEmail(credentials) {
-    console.log('Sign in with email');
-    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
-      credentials.password);
-  }
-
-  signUp(credentials) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
   }
 
   get authenticated(): boolean {
@@ -46,26 +37,43 @@ export class AuthenticationProvider {
     return this.afAuth.auth.signOut();
   }
 
+  signInWithEmail(credentials): Promise<any> {
+    // console.log('Sign in with email');
+    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
+  }
+
+  signUp(credentials): Promise<any> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
+  }
+
+
   signInWithFacebook(): Promise<any> {
     if (!(<any>window).cordova) {
       return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     } else {
       return this.facebook.login(['public_profile', 'email'])
         .then( response => {
-          console.log(response);
           const facebookCredential = firebase.auth.FacebookAuthProvider
             .credential(response.authResponse.accessToken);
 
           return firebase.auth().signInWithCredential(facebookCredential)
             .then( success => {
-              console.log("Firebase success: " + JSON.stringify(success));
+              // console.log("Firebase success: " + JSON.stringify(success));
             });
 
         }).catch((error) => { console.log(error) });
     }
   }
 
-  nativeGoogleLogin(): Promise<void> {
+  signInWithGoogle(): Promise<any> {
+    if (!(<any>window).cordova) {
+      return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    } else {
+      return this.nativeGoogleLogin();
+    }
+  }
+
+  private nativeGoogleLogin(): Promise<void> {
     const gplusUser = this.gplus.login({
       'webClientId': '372040921428-b64r6jn9kc01rvqcarkqr4it8ga58n8k.apps.googleusercontent.com',
       'offline': true,
@@ -74,16 +82,16 @@ export class AuthenticationProvider {
 
     return this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser['idToken']))
       .then( success => {
-        console.log("Firebase success: " + JSON.stringify(success));
+        // console.log("Firebase success: " + JSON.stringify(success));
       });
   }
 
-  signInWithGoogle(): Promise<any> {
+  /*signInWithGoogle(): Promise<any> {
     console.log('Sign in with google');
     return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
-  }
+  }*/
 
-  private oauthSignIn(provider: AuthProvider): Promise<any> {
+  /*private oauthSignIn(provider: AuthProvider): Promise<any> {
     if (!(<any>window).cordova) {
       return this.afAuth.auth.signInWithPopup(provider);
     } else {
@@ -103,6 +111,6 @@ export class AuthenticationProvider {
           });
         });
     }
-  }
+  }*/
 
 }

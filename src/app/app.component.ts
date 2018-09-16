@@ -2,17 +2,14 @@
 import { Component, ViewChild } from '@angular/core';
 
 // Ionic Imports
-import { App, MenuController, Nav, Platform } from 'ionic-angular';
+import { App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Page Imports
-import { TabsPage } from '../pages/tabs/tabs';
-import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
-import { ReservePage } from '../pages/reserve/reserve';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -41,8 +38,7 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 })
 export class MyApp {
 
-  // rootPage: any = TabsPage;
-  rootPage: any = LoginPage;
+  rootPage: any;
 
   menuList: any[] = [
     { name: 'Login', page: LoginPage },
@@ -58,6 +54,7 @@ export class MyApp {
     private menu: MenuController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private loadingCtrl: LoadingController,
     private auth: AuthenticationProvider
   ) {
     this.initializeApp();
@@ -74,26 +71,31 @@ export class MyApp {
   }
 
   isAuth(): void {
-    this.rootPage = ReservePage;
-    /*
+
+    const loading = this.loadingCtrl.create({
+      content: 'Carregando...'
+    });
+
+    loading.present();
+
     this.auth.afAuth.authState
       .subscribe(
         user => {
+          loading.dismiss();
           if (user) {
-            // this.rootPage = HomePage;
+            this.rootPage = HomePage;
           } else {
-            // this.rootPage = LoginPage;
+            this.rootPage = LoginPage;
           }
         },
         () => {
+          loading.dismiss();
           this.rootPage = LoginPage;
         }
-      );*/
+      );
   }
 
   openPage(menu) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(menu.page);
   }
 }

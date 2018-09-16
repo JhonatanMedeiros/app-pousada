@@ -3,14 +3,22 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Ionic Imports
-import { IonicPage, MenuController, NavController, NavParams } from 'ionic-angular';
+import {
+  AlertController,
+  IonicPage,
+  Loading,
+  LoadingController,
+  MenuController,
+  NavController,
+  NavParams
+} from 'ionic-angular';
 
 // Page Imports
+import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 
 // Providers
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
-import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -22,18 +30,24 @@ export class LoginPage {
   loginForm: FormGroup;
   loginError: string;
 
+  loading: Loading;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     private authService: AuthenticationProvider,
     private fb: FormBuilder
   ) {
 
-    this.loginForm = fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    this.buildForm();
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Carregando...'
     });
+
   }
 
   ionViewDidLoad() {
@@ -44,45 +58,76 @@ export class LoginPage {
     this.navCtrl.pop();
   }
 
-  goToSignup(): void {
+  goToSignupPage(): void {
     this.navCtrl.push(SignupPage)
   }
 
 
+  buildForm(): void {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    });
+  }
 
-  /** Functions **/
 
-  login() {
+  loginWithEmail() {
     let data = this.loginForm.value;
 
-    if (!data.email) {
-      return;
-    }
+    if (!data.email) { return; }
 
     let credentials = {
       email: data.email,
       password: data.password
     };
+
+    this.loading.present();
     this.authService.signInWithEmail(credentials)
-      .then(
-        () => this.navCtrl.setRoot(HomePage),
-        error => this.loginError = error.message
-      );
+      .then(res => {
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(error => {
+        this.loading.dismiss();
+        this.showAlert(error.message);
+      });
   }
 
   loginInWithFacebook() {
+    this.loading.present();
     this.authService.signInWithFacebook()
-      .then(res => this.navCtrl.setRoot(HomePage))
-      .catch(error => console.log(error.message));
+      .then(res => {
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(error => {
+        this.loading.dismiss();
+        this.showAlert(error.message);
+      });
   }
 
   loginWithGoogle() {
-    this.authService.nativeGoogleLogin()
-      .then(res => this.navCtrl.setRoot(HomePage))
-      .catch(error => console.log(error.message));
+    this.loading.present();
+    this.authService.signInWithGoogle()
+      .then(res => {
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(error => {
+        this.loading.dismiss();
+        this.showAlert(error.message);
+      });
   }
 
+  showAlert(msg: string) {
+    const alert = this.alertCtrl.create({
+      title: 'AVISO',
+      subTitle: msg,
+      buttons: ['OK']
+    });
 
+    alert.present();
+  }
 
 
 }
