@@ -20,7 +20,7 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
   template: `    
     <ion-menu [content]="content">
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="primary">
           <ion-title>Pages</ion-title>
         </ion-toolbar>
       </ion-header>

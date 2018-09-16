@@ -4,6 +4,9 @@ import { Component } from '@angular/core';
 // Ionic Imports
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+// Pages
+import { AdminBedroomDetailPage } from '../admin-bedroom-detail/admin-bedroom-detail';
+
 // Models
 import { BedRoom } from '../../models/bedRoom';
 
@@ -24,6 +27,7 @@ export class AdminBedroomPage {
 
   selectCard(bedRoom: BedRoom): void {
     console.log(bedRoom);
+    this.navCtrl.push(AdminBedroomDetailPage)
   }
 
 }

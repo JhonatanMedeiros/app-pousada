@@ -16,13 +16,16 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { Facebook } from '@ionic-native/facebook'
 import { GooglePlus } from '@ionic-native/google-plus';
 
-// Firebase
-import { firebaseConfig } from '../config';
+// Config
+import { firebaseConfig, ionicModuleConfig } from '../config';
 
 import { MyApp } from './app.component';
 
 // Modules
 import { ComponentsModule } from '../components/components.module';
+
+// Provider
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -33,18 +36,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { ReservePage } from '../pages/reserve/reserve';
 import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
-
-// Provider
-import { AuthenticationProvider } from '../providers/authentication/authentication';
-
-const ionicModuleConfig = {
-  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
-    'Novembro', 'Dezembro'
-  ],
-  monthShortNames: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
-  dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira'],
-  dayShortNames: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex']
-};
+import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedroom-detail';
 
 const COMPONENTS = [
   HomePage,
@@ -54,7 +46,8 @@ const COMPONENTS = [
   AboutPage,
   ContactPage,
   ReservePage,
-  AdminBedroomPage
+  AdminBedroomPage,
+  AdminBedroomDetailPage
 ];
 
 @NgModule({
