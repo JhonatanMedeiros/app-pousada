@@ -12,6 +12,29 @@
   <div class="header-bedroom-img">
     <img [src]="'assets/imgs/room/quarto-hotel.jpg'"
          onerror="this.src='assets/imgs/room/quarto-hotel.jpg'"/>
+    <button mini ion-fab><ion-icon name="camera" color="dark"></ion-icon></button>
   </div>
+
+
+  <form autocomplete="off" padding>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-textarea type="text" name="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button block color="primary-dark" type="submit">SALVAR</button>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
 
 </ion-content>

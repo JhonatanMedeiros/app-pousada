@@ -25,9 +25,12 @@ export class AdminBedroomPage {
 
   ionViewDidLoad() { }
 
+  newBedRoom(): void {
+    this.navCtrl.push(AdminBedroomDetailPage);
+  }
+
   selectCard(bedRoom: BedRoom): void {
-    console.log(bedRoom);
-    this.navCtrl.push(AdminBedroomDetailPage)
+    this.navCtrl.push(AdminBedroomDetailPage);
   }
 
 }
