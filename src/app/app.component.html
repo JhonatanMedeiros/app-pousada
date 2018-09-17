@@ -1,0 +1,49 @@
+<ion-menu [content]="content" id="ion-menu-left">
+  <ion-header>
+    <ion-toolbar color="primary" class="user-toolbar">
+      <ion-fab right top menuClose>
+        <button ion-fab mini><ion-icon name="close" color="dark"></ion-icon></button>
+      </ion-fab>
+
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col col-auto padding-left padding-right padding-top>
+            <div class="user-avatar"
+                 [ngStyle]="{ 'background-image': 'url(' + user?.photoURL + '), url(assets/imgs/avatar/profile.jpg)'}"
+            ></div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row justify-content-center>
+          <ion-col col-auto text-center padding-left padding-right padding-bottom>
+            <h2 color="dark" class="user-name">{{user?.displayName || 'N/A'}}</h2>
+            <span color="dark" ion-text>{{user?.email || 'N/A'}}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row no-padding class="user-location">
+          <ion-col text-center>
+            <span color="light" ion-text>Localização</span>
+            <h5 ion-text no-margin>Florianópolis/SC</h5>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list class="menu-list">
+      <ng-container *ngFor="let menu of menuList">
+        <button menuClose ion-item [disabled]="!menu.page" (click)="openPage(menu)">
+          <ion-icon [name]="menu.icon || 'home'" item-left color="primary-dark"></ion-icon>
+          <span ion-text color="dark">{{menu.name}}</span>
+        </button>
+      </ng-container>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

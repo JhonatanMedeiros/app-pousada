@@ -1,55 +1,40 @@
 // Angular Imports
 import { Component, ViewChild } from '@angular/core';
 
+// External Libs
+import { User } from 'firebase';
+
 // Ionic Imports
 import { App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Page Imports
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { ReservePage } from '../pages/reserve/reserve';
 import { AdminPage } from '../pages/admin/admin';
-import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
-import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedroom-detail';
+import { AboutPage } from '../pages/about/about';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 @Component({
-  template: `    
-    <ion-menu [content]="content">
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Pages</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-content>
-        <ion-list>
-          <button menuClose ion-item *ngFor="let menu of menuList" (click)="openPage(menu)">
-            {{menu.name}}
-          </button>
-        </ion-list>
-      </ion-content>
-
-    </ion-menu>
-
-    <ion-nav #content [root]="rootPage"></ion-nav>
-  `
+  templateUrl: 'app.component.html'
 })
 export class MyApp {
+
+  user: User;
 
   rootPage: any;
 
   menuList: any[] = [
-    { name: 'Login', page: LoginPage },
-    { name: 'Signup', page: SignupPage },
-    { name: 'Home', page: HomePage },
-    { name: 'Admin', page: AdminPage },
-    { name: 'Admin Bedroom', page: AdminBedroomPage },
-    { name: 'Admin Bedroom Detail', page: AdminBedroomDetailPage }
+    { name: 'Início', page: HomePage, icon: 'home' },
+    { name: 'Agendar Quarto', page: ReservePage, icon: 'calendar' },
+    { name: 'Aministração', page: AdminPage, icon: 'briefcase' },
+    { name: 'Configurações', page: AboutPage, icon: 'settings' },
+    { name: 'Sobre', page: AboutPage, icon: 'information-circle' },
+    { name: 'Sair', page: LoginPage, icon: 'log-out' }
   ];
 
   @ViewChild(Nav) nav: Nav;
@@ -72,8 +57,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.rootPage = AdminPage
-      // this.isAuth();
+      // this.rootPage = AdminPage;
+      this.isAuth();
     });
   }
 
@@ -88,6 +73,7 @@ export class MyApp {
     this.auth.afAuth.authState
       .subscribe(
         user => {
+          this.user = user;
           loading.dismiss();
           if (user) {
             this.rootPage = HomePage;
@@ -103,6 +89,12 @@ export class MyApp {
   }
 
   openPage(menu) {
-    this.nav.setRoot(menu.page);
+    if (menu.page) {
+      if (menu.page === LoginPage) {
+        this.auth.signOut();
+      }
+
+      this.nav.setRoot(menu.page);
+    }
   }
 }
