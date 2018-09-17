@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 // Ionic Imports
-import { MenuController, NavController } from 'ionic-angular';
+import { AlertController, MenuController, NavController } from 'ionic-angular';
 
 // Page
 import { LoginPage } from '../login/login';
@@ -19,19 +19,34 @@ export class HomePage {
   constructor(
     private nav: NavController,
     private menu: MenuController,
+    private alertCtrl: AlertController,
     private auth: AuthenticationProvider
   ) { }
 
-  login() {
+  login(): void {
     this.menu.close();
     this.auth.signOut();
     this.nav.setRoot(LoginPage);
   }
 
-  logout() {
-    this.menu.close();
-    this.auth.signOut();
-    this.nav.setRoot(HomePage);
+  logout(): void {
+    const confirm = this.alertCtrl.create({
+      title: 'AVISO',
+      message: 'Deseja realmente sair ?',
+      buttons: [
+        { text: 'Cancelar' },
+        {
+          text: 'Sair',
+          handler: () => {
+            this.menu.close();
+            this.auth.signOut();
+            this.nav.setRoot(LoginPage);
+          }
+        }
+      ]
+    });
+
+    confirm.present();
   }
 
 }

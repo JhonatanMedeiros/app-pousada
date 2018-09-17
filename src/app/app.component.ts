@@ -1,13 +1,13 @@
 // Angular Imports
 import { Component, ViewChild } from '@angular/core';
 
-// External Libs
-import { User } from 'firebase';
-
 // Ionic Imports
-import { App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
+import { AlertController, App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+// External Libs
+import { User } from 'firebase';
 
 // Page Imports
 import { HomePage } from '../pages/home/home';
@@ -15,6 +15,7 @@ import { LoginPage } from '../pages/login/login';
 import { ReservePage } from '../pages/reserve/reserve';
 import { AdminPage } from '../pages/admin/admin';
 import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
@@ -34,6 +35,7 @@ export class MyApp {
     { name: 'Aministração', page: AdminPage, icon: 'briefcase' },
     { name: 'Configurações', page: AboutPage, icon: 'settings' },
     { name: 'Sobre', page: AboutPage, icon: 'information-circle' },
+    { name: 'Contato', page: ContactPage, icon: 'call' },
     { name: 'Sair', page: LoginPage, icon: 'log-out' }
   ];
 
@@ -46,6 +48,7 @@ export class MyApp {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
     private auth: AuthenticationProvider
   ) {
     this.initializeApp();
@@ -91,10 +94,30 @@ export class MyApp {
   openPage(menu) {
     if (menu.page) {
       if (menu.page === LoginPage) {
-        this.auth.signOut();
+        this.signOutShowConfirm();
+        return;
       }
-
+      this.menu.close();
       this.nav.setRoot(menu.page);
     }
+  }
+
+  signOutShowConfirm() {
+    const confirm = this.alertCtrl.create({
+      title: 'AVISO',
+      message: 'Deseja realmente sair ?',
+      buttons: [
+        { text: 'Cancelar' },
+        {
+          text: 'Sair',
+          handler: () => {
+            this.menu.close();
+            this.nav.setRoot(LoginPage);
+            this.auth.signOut();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

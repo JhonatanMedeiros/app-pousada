@@ -18,16 +18,18 @@
 
   <ion-list>
 
-    <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>
+    <ion-list-header *ngIf="auth.getEmail()">
+      <span ion-text color="dark">{{auth.getEmail()}}</span>
+    </ion-list-header>
 
     <ion-item (click)="logout()" *ngIf="auth.authenticated">
-      <ion-icon name="log-out" item-left></ion-icon>
-      Sair
+      <ion-icon name="log-out" item-left color="primary-dark"></ion-icon>
+      <span ion-text color="dark">Sair</span>
     </ion-item>
 
     <ion-item (click)="login()" *ngIf="!auth.authenticated">
-      <ion-icon name="log-in" item-left></ion-icon>
-      Entrar
+      <ion-icon name="log-in" item-left color="primary-dark"></ion-icon>
+      <span ion-text color="dark">Entrar</span>
     </ion-item>
 
   </ion-list>

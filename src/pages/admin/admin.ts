@@ -2,11 +2,11 @@
 import { Component } from '@angular/core';
 
 // Ionic Imports
-import { NavController, NavParams } from 'ionic-angular';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
 
 // Page Imports
-import { AdminBedroomPage } from '../admin-bedroom/admin-bedroom';
 import { LoginPage } from '../login/login';
+import { AdminBedroomPage } from '../admin-bedroom/admin-bedroom';
 
 // Providers
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
@@ -20,6 +20,7 @@ export class AdminPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private alertCtrl: AlertController,
     private authService: AuthenticationProvider
   ) {
   }
@@ -31,8 +32,21 @@ export class AdminPage {
   }
 
   signOut(): void {
-    this.authService.signOut();
-    this.navCtrl.setRoot(LoginPage);
+    const confirm = this.alertCtrl.create({
+      title: 'AVISO',
+      message: 'Deseja realmente sair ?',
+      buttons: [
+        { text: 'Cancelar' },
+        {
+          text: 'Sair',
+          handler: () => {
+            this.authService.signOut();
+            this.navCtrl.setRoot(LoginPage);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }
