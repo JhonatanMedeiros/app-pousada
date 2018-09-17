@@ -20,7 +20,6 @@ export class AuthenticationProvider {
     private gplus: GooglePlus
   ) {
     afAuth.user.subscribe(user => {
-      console.log(user);
       this.user = user;
     });
   }
