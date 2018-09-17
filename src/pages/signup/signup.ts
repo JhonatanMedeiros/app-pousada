@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Ionic Imports
-import { IonicPage, MenuController, NavController, NavParams } from 'ionic-angular';
+import { MenuController, NavController, NavParams } from 'ionic-angular';
 
 // Page Imports
 import { LoginPage } from '../login/login';
@@ -12,8 +12,6 @@ import { HomePage } from '../home/home';
 // Provider Imports
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
-
-@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',

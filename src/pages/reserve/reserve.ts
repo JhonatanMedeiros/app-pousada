@@ -5,12 +5,11 @@ import { Component } from '@angular/core';
 import { CalendarModal, CalendarModalOptions, CalendarResult } from "ion2-calendar";
 
 // Page Imports
-import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 // Models
 import { BedRoom } from '../../models/bedRoom';
 
-@IonicPage()
 @Component({
   selector: 'page-reserve',
   templateUrl: 'reserve.html',

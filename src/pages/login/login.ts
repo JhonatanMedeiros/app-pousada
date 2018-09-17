@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Ionic Imports
 import {
   AlertController,
-  IonicPage,
   Loading,
   LoadingController,
   MenuController,
@@ -20,7 +19,6 @@ import { SignupPage } from '../signup/signup';
 // Providers
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

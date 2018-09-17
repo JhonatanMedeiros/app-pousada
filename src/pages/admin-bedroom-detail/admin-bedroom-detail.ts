@@ -2,9 +2,8 @@
 import { Component } from '@angular/core';
 
 // Ionic Imports
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-admin-bedroom-detail',
   templateUrl: 'admin-bedroom-detail.html',

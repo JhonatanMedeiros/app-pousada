@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 // Ionic Imports
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 // Pages
 import { AdminBedroomDetailPage } from '../admin-bedroom-detail/admin-bedroom-detail';
@@ -10,7 +10,6 @@ import { AdminBedroomDetailPage } from '../admin-bedroom-detail/admin-bedroom-de
 // Models
 import { BedRoom } from '../../models/bedRoom';
 
-@IonicPage()
 @Component({
   selector: 'page-admin-bedroom',
   templateUrl: 'admin-bedroom.html',
