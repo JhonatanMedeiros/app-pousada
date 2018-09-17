@@ -86,8 +86,29 @@ page-reserve {
 
   }
 
+  .reserve-room {
+    margin: 15px 10px 12px;
+    border-bottom: solid 1px #d4d4d4;
+    padding-bottom: 8px;
 
-  #step-complete {
+    .info {
+      p {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #222;
+
+        .caption {
+          color: #909090;
+          min-width: 60px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .step-complete {
     text-align: center;
     vertical-align: middle;
     margin: 0 auto;

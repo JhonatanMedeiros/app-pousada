@@ -93,11 +93,41 @@
 
   </ng-container>
 
-  <bedroom-card *ngIf="activeStep === 2" [config]="{ showBtnRerve: true }"
-                (onReserveRoom)="selectRoom($event)"></bedroom-card>
+  <ng-container *ngIf="activeStep === 2">
+
+    <div class="reserve-room">
+
+      <div class="info">
+        <p>
+          <span class="caption">Estádia:</span>
+          <span>
+            <strong ion-text color="dark">19/05/2018</strong>
+            <span>até</span>
+            <strong ion-text color="dark">19/05/2018</strong>
+          </span>
+        </p>
+        <p>
+          <span class="caption">Adultos:</span>
+          <span>
+            <span>3</span>
+          </span>
+        </p>
+        <p>
+          <span class="caption">Crianças:</span>
+          <span>
+            <span>N/A</span>
+          </span>
+        </p>
+      </div>
+
+    </div>
+
+    <bedroom-card [config]="{ showBtnRerve: true }" (onReserveRoom)="selectRoom($event)"></bedroom-card>
+
+  </ng-container>
 
   <ng-container *ngIf="activeStep >= 3">
-    <div id="step-complete">
+    <div class="step-complete">
       <div class="done-mark">
         <ion-icon class="icon" ios="md-checkmark" md="md-checkmark"></ion-icon>
       </div>
