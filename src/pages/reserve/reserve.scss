@@ -1,5 +1,9 @@
 page-reserve {
 
+  .scroll-content {
+    margin-bottom: 85px;
+  }
+
   .reserve-block {
     padding: 16px;
 
@@ -47,6 +51,7 @@ page-reserve {
     }
 
     .datetime-btn {
+      cursor: pointer;
       background-color: #fff17640;
     }
 
@@ -107,7 +112,6 @@ page-reserve {
       }
     }
   }
-
   .step-complete {
     text-align: center;
     vertical-align: middle;
