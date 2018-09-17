@@ -60,8 +60,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      // this.rootPage = AdminPage;
-      this.isAuth();
+      this.rootPage = ReservePage;
+      // this.isAuth();
     });
   }
 

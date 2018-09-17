@@ -1,9 +1,11 @@
 // Angular Imports
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+// External Libs
+import { CalendarModal, CalendarModalOptions, CalendarResult } from "ion2-calendar";
 
 // Page Imports
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 
 // Models
 import { BedRoom } from '../../models/bedRoom';
@@ -15,25 +17,36 @@ import { BedRoom } from '../../models/bedRoom';
 })
 export class ReservePage {
 
-  activeStep: number = 0;
-
-  form: FormGroup;
+  activeStep: number = 1;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private formBuilder: FormBuilder
-  ) {
-    this.form = formBuilder.group({
-      dateStart: ['', Validators.compose([Validators.required])],
-      dateEnd: ['', Validators.compose([Validators.required])]
-    });
-  }
+    private modalCtrl: ModalController,
+  ) { }
 
   ionViewDidLoad() { }
 
-  submitForm(): void {
-    this.activeStep = 2
+  openCalendar() {
+    const options: CalendarModalOptions = {
+      title: 'Escolha uma data',
+      pickMode: 'range',
+      closeLabel: 'Cancelar',
+      doneLabel: 'CONFIMAR',
+      closeIcon: true,
+      doneIcon: true,
+      weekdays: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      defaultDate: new Date()
+    };
+    let myCalendar =  this.modalCtrl.create(CalendarModal, {
+      options: options
+    });
+
+    myCalendar.present();
+
+    myCalendar.onDidDismiss((date: CalendarResult, type: string) => {
+      console.log(date);
+    })
   }
 
   selectRoom(bedroom: BedRoom): void {

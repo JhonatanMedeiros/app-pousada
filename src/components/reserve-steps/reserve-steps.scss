@@ -33,7 +33,12 @@
     .divider {
       height: 1.4px;
       width: 40px;
-      background-color: #616161;
+      border: 5px dotted rgba(97, 97, 97, 0.56);
+      border-style: none none dotted;
+
+      &.done {
+        border-color: color($colors, primary);
+      }
     }
 
     .step {
@@ -45,9 +50,13 @@
       cursor: pointer;
 
       &.done {
-        background-color: #FFF176;
-        .number { display: none !important; }
-        .icon { display: block !important; }
+        background-color: color($colors, primary);
+        //background-color: #FFF176;
+        .number {
+          //display: none !important;
+          color: color($colors, dark);
+        }
+        //.icon { display: block !important; }
       }
 
       .icon-block {

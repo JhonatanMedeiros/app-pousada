@@ -34,7 +34,7 @@ export class ReserveStepsComponent implements OnInit {
 
   isActive(): void {
     this.stepList.forEach((value, index) => {
-      value.active = index + 1 < this._activeStep;
+      value.active = index < this._activeStep;
     });
   }
 

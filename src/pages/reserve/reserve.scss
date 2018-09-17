@@ -1,22 +1,91 @@
 page-reserve {
 
-  ion-content { background: linear-gradient(#F2F2F2, #F2C94C) }
+  .reserve-block {
+    padding: 16px;
 
-  .item {
-    background-color: transparent !important;
-    border: none !important;
-  }
-
-  form {
-    margin-top: 50px;
-
-    .btn {
-      background-color: #65554D;
-      color: white;
-      height: 35px !important;
-      margin-top: 35px !important;
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      -webkit-box-shadow: 0 0 1px rgba(color($colors, primary), 0.50), 0 2px 4px rgba(color($colors, primary-dark), 0.25);
+      box-shadow: 0 0 1px rgba(color($colors, primary), 0.50), 0 2px 4px rgba(color($colors, primary-dark), 0.25);
     }
+
+    ion-grid {
+      background-color: #fff;
+      padding: 0;
+    }
+
+    ion-grid ion-row ion-col {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    ion-grid ion-row ion-col ion-icon {
+      margin-right: 1rem;
+      font-size: 2.5rem;
+      width: 2.5rem;
+    }
+
+    .bb {
+      border-bottom: 1px solid rgba(color($colors, primary), .50);
+    }
+
+    .br {
+      border-right: 1px solid rgba(color($colors, primary), .50);
+    }
+
+    .no-margin {
+      margin: 0 !important;
+    }
+
+    .datetime-btn {
+      background-color: #fff17640;
+    }
+
+    .no-paddingT {
+      padding-top: 0!important;
+    }
+
+    .no-paddingB {
+      padding-bottom: 0!important;
+    }
+
+    .select-block {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 0;
+      border-bottom-color: transparent;
+      .item {
+        font-size: 1.25rem;
+        padding-left: 0;
+        border: 0;
+
+        .label {
+          margin-right: 0;
+        }
+
+        .select {
+          font-weight: 600;
+          color: color($colors, primary);
+          padding-left: 4px;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+      }
+    }
+
   }
+
 
   #step-complete {
     text-align: center;
@@ -52,5 +121,9 @@ page-reserve {
         font-size: 2.4em;
       }
     }
+  }
+
+  .steps-block {
+    border-top: solid 1px color($colors, primary);
   }
 }
