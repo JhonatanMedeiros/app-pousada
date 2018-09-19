@@ -1,0 +1,32 @@
+{
+	"configuration": {
+		"label": {
+			"cancelText": "Cancelar",
+			"okText": "OK"
+		}
+	},
+	"configuration-page": {
+		"label": {
+			"en-US": "Inglês - US",
+			"language": "Idioma",
+			"pt-BR": "Português - BR",
+			"user-settings": "Configurações do usuário"
+		}
+	},
+	"menu": {
+		"about": "Sobre",
+		"administration": "Administração",
+		"configuration": "Configurações",
+		"contact": "Contato",
+		"exit": "Sair",
+		"home": "Início",
+		"room-reserve": "Reserva"
+	},
+	"toolbar": {
+		"about": "Sobre",
+		"administration": "Administração",
+		"configuration": "Configurações",
+		"contact": "Contato",
+		"home": "Início"
+	}
+}

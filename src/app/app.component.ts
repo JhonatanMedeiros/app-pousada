@@ -1,5 +1,5 @@
 // Angular Imports
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 
 // Ionic Imports
 import { AlertController, App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // External Libs
 import { User } from 'firebase';
+import { TranslateService } from '@ngx-translate/core';
 
 // Page Imports
 import { HomePage } from '../pages/home/home';
@@ -16,28 +17,24 @@ import { ReservePage } from '../pages/reserve/reserve';
 import { AdminPage } from '../pages/admin/admin';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+import { ConfigurationPage } from '../pages/configuration/configuration';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: 'app.component.html'
 })
-export class MyApp {
+export class MyApp implements OnDestroy {
 
   user: User;
 
   rootPage: any;
 
-  menuList: any[] = [
-    { name: 'Início', page: HomePage, icon: 'home' },
-    { name: 'Agendar Quarto', page: ReservePage, icon: 'calendar' },
-    { name: 'Administração', page: AdminPage, icon: 'briefcase' },
-    { name: 'Configurações', page: AboutPage, icon: 'settings' },
-    { name: 'Sobre', page: AboutPage, icon: 'information-circle' },
-    { name: 'Contato', page: ContactPage, icon: 'call' },
-    { name: 'Sair', page: LoginPage, icon: 'log-out' }
-  ];
+  menuList: any[] = [];
+
+  translate$: Subscription;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -49,9 +46,17 @@ export class MyApp {
     private statusBar: StatusBar,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private translateService: TranslateService,
     private auth: AuthenticationProvider
   ) {
+    this.loadTranslate();
     this.initializeApp();
+  }
+
+  ngOnDestroy(): void {
+    if (this.translate$) {
+      this.translate$.unsubscribe();
+    }
   }
 
   initializeApp() {
@@ -118,5 +123,26 @@ export class MyApp {
       ]
     });
     confirm.present();
+  }
+
+  loadTranslate(): void {
+    const CURRENT_LANG = this.translateService.getBrowserLang();
+    this.translateService.setDefaultLang('en');
+    this.translateService.use(CURRENT_LANG);
+
+    this.translate$ = this.translateService.stream(
+      [
+        'menu.home', 'menu.room-reserve', 'menu.administration', 'menu.configuration', 'menu.contact', 'menu.about', 'menu.exit'
+      ]).subscribe(v => {
+        this.menuList = [
+          { name: v['menu.home'], page: HomePage, icon: 'home' },
+          { name: v['menu.room-reserve'], page: ReservePage, icon: 'calendar' },
+          { name: v['menu.administration'], page: AdminPage, icon: 'briefcase' },
+          { name: v['menu.configuration'], page: ConfigurationPage, icon: 'settings' },
+          { name: v['menu.about'], page: AboutPage, icon: 'information-circle' },
+          { name: v['menu.contact'], page: ContactPage, icon: 'call' },
+          { name: v['menu.exit'], page: LoginPage, icon: 'log-out' }
+        ]
+      });
   }
 }

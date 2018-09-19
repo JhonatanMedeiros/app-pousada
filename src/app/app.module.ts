@@ -1,7 +1,7 @@
 // Angular Imports
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
@@ -20,6 +20,8 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { Facebook } from '@ionic-native/facebook'
 import { GooglePlus } from '@ionic-native/google-plus';
 import { CalendarModule } from 'ion2-calendar';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Config
 import { firebaseConfig, ionicModuleConfig } from '../config';
@@ -40,10 +42,15 @@ import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ReservePage } from '../pages/reserve/reserve';
+import { ConfigurationPage } from '../pages/configuration/configuration';
 import { AdminPage } from '../pages/admin/admin';
 import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedroom-detail';
 import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  // return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 const PAGES_COMPONENTS = [
   HomePage,
@@ -53,6 +60,7 @@ const PAGES_COMPONENTS = [
   LoginPage,
   SignupPage,
   ReservePage,
+  ConfigurationPage,
   AdminPage,
   AdminBedroomPage,
   AdminBedroomDetailPage,
@@ -69,6 +77,13 @@ const PAGES_COMPONENTS = [
     FormsModule,
     IonicModule.forRoot(MyApp, ionicModuleConfig),
     AngularFireModule.initializeApp(firebaseConfig.fire),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     NgxErrorsModule,
     ComponentsModule,
     CalendarModule
