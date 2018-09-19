@@ -32,7 +32,7 @@ export class MyApp {
   menuList: any[] = [
     { name: 'Início', page: HomePage, icon: 'home' },
     { name: 'Agendar Quarto', page: ReservePage, icon: 'calendar' },
-    { name: 'Aministração', page: AdminPage, icon: 'briefcase' },
+    { name: 'Administração', page: AdminPage, icon: 'briefcase' },
     { name: 'Configurações', page: AboutPage, icon: 'settings' },
     { name: 'Sobre', page: AboutPage, icon: 'information-circle' },
     { name: 'Contato', page: ContactPage, icon: 'call' },
