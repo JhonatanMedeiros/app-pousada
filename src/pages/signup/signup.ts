@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Ionic Imports
-import { MenuController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, Loading, LoadingController, NavController } from 'ionic-angular';
 
 // Page Imports
 import { LoginPage } from '../login/login';
@@ -18,16 +18,22 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 })
 export class SignupPage {
 
+  loading: Loading;
+
   signupError: string;
   form: FormGroup;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public menuCtrl: MenuController,
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
     private authService: AuthenticationProvider,
     private fb: FormBuilder,
   ) {
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Carregando...'
+    });
 
     this.form = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -36,9 +42,7 @@ export class SignupPage {
     });
   }
 
-  ionViewDidLoad() {
-    // this.menuCtrl.enable(false);
-  }
+  ionViewDidLoad() { }
 
   viewDidLeave(){
     this.navCtrl.pop();
@@ -55,10 +59,26 @@ export class SignupPage {
       email: data.email,
       password: data.password
     };
-    this.authService.signUp(credentials).then(
-      () => this.navCtrl.setRoot(HomePage),
-      error => this.signupError = error.message
-    );
+    this.loading.present();
+    this.authService.signUp(credentials)
+      .then(res => {
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(error => {
+        this.loading.dismiss();
+        this.showAlert(error.message);
+      });
+  }
+
+  showAlert(msg: string) {
+    const alert = this.alertCtrl.create({
+      title: 'AVISO',
+      subTitle: msg,
+      buttons: ['OK']
+    });
+
+    alert.present();
   }
 
 }

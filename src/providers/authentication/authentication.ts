@@ -73,16 +73,22 @@ export class AuthenticationProvider {
   }
 
   private nativeGoogleLogin(): Promise<void> {
+
     const gplusUser = this.gplus.login({
       'webClientId': '372040921428-b64r6jn9kc01rvqcarkqr4it8ga58n8k.apps.googleusercontent.com',
       'offline': true,
       'scopes': 'profile email'
     });
 
-    return this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser['idToken']))
-      .then( success => {
-        // console.log("Firebase success: " + JSON.stringify(success));
-      });
+
+    return new Promise((resolve, reject) => {
+      return this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser['idToken']))
+        .then( (success: any) => {
+          resolve(success)
+        })
+        .catch(error => reject(error));
+    });
+
   }
 
   /*signInWithGoogle(): Promise<any> {
