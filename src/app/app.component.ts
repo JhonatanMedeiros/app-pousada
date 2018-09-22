@@ -1,9 +1,9 @@
 // Angular Imports
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 // Ionic Imports
-import { AlertController, App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
+import { AlertController, App, LoadingController, MenuController, Nav, Platform, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -27,7 +27,7 @@ import { TranslateStorageProvider } from '../providers/translate-storage/transla
 @Component({
   templateUrl: 'app.component.html'
 })
-export class MyApp implements OnDestroy {
+export class MyApp implements OnInit, OnDestroy {
 
   user: User;
 
@@ -47,12 +47,32 @@ export class MyApp implements OnDestroy {
     private statusBar: StatusBar,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
     private translateService: TranslateService,
     private auth: AuthenticationProvider,
     private translateServiceStorage: TranslateStorageProvider
   ) {
     this.loadTranslate();
     this.initializeApp();
+  }
+
+  ngOnInit(): void {
+    // listen to the service worker promise in index.html to see if there has been a new update.
+    // condition: the service-worker.js needs to have some kind of change - e.g. increment CACHE_VERSION.
+    if (window['isUpdateAvailable']) {
+      window['isUpdateAvailable']
+        .then(isAvailable => {
+          if (isAvailable) {
+            const toast = this.toastCtrl.create({
+              message: 'Nova atualização disponível! Recarregue o aplicativo para ver as últimas alterações.',
+              position: 'bottom',
+              showCloseButton: true,
+              duration: 3300
+            });
+            toast.present();
+          }
+        });
+    }
   }
 
   ngOnDestroy(): void {
