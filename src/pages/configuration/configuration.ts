@@ -1,11 +1,8 @@
 // Angular Imports
 import { Component } from '@angular/core';
 
-// Ionic Imports
-import { NavController, NavParams } from 'ionic-angular';
-
-// External Libs
-import { TranslateService } from '@ngx-translate/core';
+// Services
+import { TranslateStorageProvider } from '../../providers/translate-storage/translate-storage';
 
 @Component({
   selector: 'page-configuration',
@@ -13,16 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ConfigurationPage {
 
-  language: string = this.translateService.currentLang;
+  language: string = this.translateStorageService.current_lang;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private translateService: TranslateService
-  ) { }
+  constructor(private translateStorageService: TranslateStorageProvider) { }
 
   changeLanguage(): void {
-    this.translateService.use(this.language);
+    this.translateStorageService.saveLocalization(this.language);
   }
 
 }

@@ -12,6 +12,7 @@ registerLocaleData(localePt);
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
 
 // External Libs
 import { AngularFireModule } from 'angularfire2';
@@ -33,6 +34,7 @@ import { ComponentsModule } from '../components/components.module';
 
 // Provider
 import { AuthenticationProvider } from '../providers/authentication/authentication';
+import { TranslateStorageProvider } from '../providers/translate-storage/translate-storage';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -47,7 +49,6 @@ import { AdminBedroomDetailPage } from '../pages/admin-bedroom-detail/admin-bedr
 import { AdminBedroomPage } from '../pages/admin-bedroom/admin-bedroom';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  // return new TranslateHttpLoader(http);
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -74,6 +75,7 @@ const PAGES_COMPONENTS = [
     HttpClientModule,
     FormsModule,
     IonicModule.forRoot(MyApp, ionicModuleConfig),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig.fire),
     TranslateModule.forRoot({
       loader: {
@@ -99,7 +101,8 @@ const PAGES_COMPONENTS = [
     AuthenticationProvider,
     AngularFireAuth,
     Facebook,
-    GooglePlus
+    GooglePlus,
+    TranslateStorageProvider
   ]
 })
 export class AppModule {}

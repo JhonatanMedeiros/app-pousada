@@ -1,5 +1,6 @@
 // Angular Imports
 import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 // Ionic Imports
 import { AlertController, App, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
@@ -21,7 +22,7 @@ import { ConfigurationPage } from '../pages/configuration/configuration';
 
 // Providers Imports
 import { AuthenticationProvider } from '../providers/authentication/authentication';
-import { Subscription } from 'rxjs';
+import { TranslateStorageProvider } from '../providers/translate-storage/translate-storage';
 
 @Component({
   templateUrl: 'app.component.html'
@@ -47,7 +48,8 @@ export class MyApp implements OnDestroy {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private translateService: TranslateService,
-    private auth: AuthenticationProvider
+    private auth: AuthenticationProvider,
+    private translateServiceStorage: TranslateStorageProvider
   ) {
     this.loadTranslate();
     this.initializeApp();
@@ -126,9 +128,7 @@ export class MyApp implements OnDestroy {
   }
 
   loadTranslate(): void {
-    const CURRENT_LANG = this.translateService.getBrowserLang();
-    this.translateService.setDefaultLang('en');
-    this.translateService.use(CURRENT_LANG);
+    this.translateServiceStorage.getLocalization();
 
     this.translate$ = this.translateService.stream(
       [

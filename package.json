@@ -41,6 +41,7 @@
     "cordova-plugin-ionic-webview": "^2.0.2",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-sqlite-storage": "^2.4.0",
     "firebase": "^5.4.2",
     "ion2-calendar": "^2.2.0",
     "ionic-angular": "3.9.2",
@@ -69,7 +70,8 @@
       },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "UqeNnBnQSR5XUeHoqKYlB71N"
-      }
+      },
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "android"

@@ -94,4 +94,5 @@
         <variable name="REVERSED_CLIENT_ID" value="UqeNnBnQSR5XUeHoqKYlB71N" />
     </plugin>
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
 </widget>
