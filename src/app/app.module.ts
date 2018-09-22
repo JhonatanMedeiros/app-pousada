@@ -36,7 +36,6 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 
 // Pages
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { LoginPage } from '../pages/login/login';
@@ -54,7 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 const PAGES_COMPONENTS = [
   HomePage,
-  TabsPage,
   AboutPage,
   ContactPage,
   LoginPage,
