@@ -1,4 +1,9 @@
+// Angular Imports
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+// External Libs
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'reserve-steps',
@@ -6,11 +11,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ReserveStepsComponent implements OnInit {
 
-  @Input() stepList: { name: string, active: boolean }[] = [
-    { name: 'Estadia', active: false },
-    { name: 'Quartos', active: false },
-    { name: 'Finalizar', active: false }
-  ];
+  stepList: { name: string, active: boolean }[] = [];
+
+  translate$: Subscription;
 
   // @Input() activeStep: number = 1;
   _activeStep: number;
@@ -26,10 +29,10 @@ export class ReserveStepsComponent implements OnInit {
 
   @Output() onSelectStep: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
-    this.isActive();
+    this.fillListSteps();
   }
 
   isActive(): void {
@@ -42,6 +45,20 @@ export class ReserveStepsComponent implements OnInit {
     this._activeStep = step;
     this.isActive();
     this.onSelectStep.emit(this._activeStep);
+  }
+
+  fillListSteps(): void {
+    this.translate$ = this.translateService.stream(
+      [
+        'pages.reserve.stay', 'pages.reserve.bedrooms', 'pages.reserve.done'
+      ]).subscribe(v => {
+      this.stepList = [
+        { name: v['pages.reserve.stay'], active: false },
+        { name: v['pages.reserve.bedrooms'], active: false },
+        { name: v['pages.reserve.done'], active: false }
+      ];
+      this.isActive();
+    });
   }
 
 }

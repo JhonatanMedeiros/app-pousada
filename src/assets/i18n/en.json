@@ -13,6 +13,23 @@
 			"user-settings": "User Settings"
 		}
 	},
+	"home-page": {
+		"label": {
+			"exit": "Exit",
+			"login": "Login"
+		}
+	},
+	"login_signup-page": {
+		"btn": {
+			"login": "Login",
+			"signup": "Register"
+		},
+		"label": {
+			"have_acoount": "I already have an account",
+			"no_account": "Create your account",
+			"or": "OR"
+		}
+	},
 	"menu": {
 		"about": "About",
 		"administration": "Administration",
@@ -20,13 +37,46 @@
 		"contact": "Contact",
 		"exit": "Exit",
 		"home": "Home",
+		"localization": "Localization",
 		"room-reserve": "Booking"
+	},
+	"pages": {
+		"admin": {
+			"bedrooms": "Bedrooms",
+			"exit": "Exit",
+			"hostel-settings": "Hostel Settings",
+			"management": "Management",
+			"members": "Users",
+			"reserve": "Booking"
+		},
+		"reserve": {
+			"adults": "Adults",
+			"bedrooms": "Bedrooms",
+			"btn-next": "Next",
+			"btn-reserve": "Book",
+			"check-in": "Check-In",
+			"check-out": "Check-Out",
+			"children": "Children",
+			"done": "Done",
+			"ready": "Ready!",
+			"select": "Select...",
+			"stay": "Stay",
+			"to": "to"
+		}
+	},
+	"profile": {
+		"email": "Email",
+		"name": "Name",
+		"password": "Password"
 	},
 	"toolbar": {
 		"about": "About",
 		"administration": "Administration",
+		"bedrooms": "Bedrooms",
+		"bedroom": "Bedroom",
 		"configuration": "Configuration",
 		"contact": "Contact",
-		"home": "Home"
+		"home": "Home",
+		"reserve": "Reserve"
 	}
 }

@@ -13,6 +13,23 @@
 			"user-settings": "Configurações do usuário"
 		}
 	},
+	"home-page": {
+		"label": {
+			"exit": "Sair",
+			"login": "Entrar"
+		}
+	},
+	"login_signup-page": {
+		"btn": {
+			"login": "Entrar",
+			"signup": "Cadastrar"
+		},
+		"label": {
+			"have_acoount": "Já tenho uma conta",
+			"no_account": "Crie sua conta",
+			"or": "OU"
+		}
+	},
 	"menu": {
 		"about": "Sobre",
 		"administration": "Administração",
@@ -20,13 +37,46 @@
 		"contact": "Contato",
 		"exit": "Sair",
 		"home": "Início",
+		"localization": "Localização",
 		"room-reserve": "Reserva"
+	},
+	"pages": {
+		"admin": {
+			"bedrooms": "Quartos",
+			"exit": "Sair",
+			"hostel-settings": "Configurações da pousada",
+			"management": "Gestão",
+			"members": "Usuários",
+			"reserve": "Reservas"
+		},
+		"reserve": {
+			"adults": "Adultos",
+			"bedrooms": "Quartos",
+			"btn-next": "Próximo",
+			"btn-reserve": "Reservar",
+			"check-in": "Data de Entrada",
+			"check-out": "Data de Saída",
+			"children": "Crianças",
+			"done": "Finalizar",
+			"ready": "Pronto!",
+			"select": "Selecionar...",
+			"stay": "Estadia",
+			"to": "até"
+		}
+	},
+	"profile": {
+		"email": "Email",
+		"name": "Nome",
+		"password": "Senha"
 	},
 	"toolbar": {
 		"about": "Sobre",
 		"administration": "Administração",
+		"bedrooms": "Quartos",
+		"bedroom": "Quarto",
 		"configuration": "Configurações",
 		"contact": "Contato",
-		"home": "Início"
+		"home": "Início",
+		"reserve": "Agendar Quarto"
 	}
 }

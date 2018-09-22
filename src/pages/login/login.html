@@ -10,7 +10,7 @@
 
       <!-- [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }" -->
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label floating>{{'profile.email' | translate}}</ion-label>
         <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
 
@@ -22,7 +22,7 @@
 
       <!-- [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }" -->
       <ion-item>
-        <ion-label floating>Senha</ion-label>
+        <ion-label floating>{{'profile.password' | translate}}</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
@@ -38,12 +38,12 @@
 
       <ion-row>
         <button ion-button block color="light" class="login-btn" type="submit" [disabled]="!loginForm.valid">
-          Entrar
+          {{'login_signup-page.btn.login' | translate}}
         </button>
       </ion-row>
 
       <ion-row>
-        <div class="row-divider">OU</div>
+        <div class="row-divider">{{'login_signup-page.label.or' | translate}}</div>
       </ion-row>
 
       <ion-row>
@@ -63,7 +63,7 @@
 
       <ion-row>
         <div class="create-account" text-center>
-          <span (click)="goToSignupPage()">Criar sua conta</span>
+          <span (click)="goToSignupPage()">{{'login_signup-page.label.no_account' | translate}}</span>
         </div>
       </ion-row>
 

@@ -48,6 +48,7 @@
       border-radius: 50%;
       position: relative;
       cursor: pointer;
+      text-align: center;
 
       &.done {
         background-color: color($colors, primary);
@@ -84,11 +85,11 @@
       }
 
       span {
-        position: absolute;
-        bottom: -19px;
-        right: -4px;
+        position: relative;
+        bottom: -49px;
         color: #616161;
         font-weight: 500;
+        overflow-wrap: normal;
       }
 
     }

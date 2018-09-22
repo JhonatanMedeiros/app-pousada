@@ -7,7 +7,7 @@
   <ion-grid>
     <ion-row>
       <div class="create-account" text-center>
-        <span>Criar sua conta</span>
+        <span>{{'login_signup-page.label.no_account' | translate}}</span>
       </div>
     </ion-row>
   </ion-grid>
@@ -18,7 +18,7 @@
 
       <!-- [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }" -->
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label floating>{{'profile.email' | translate}}</ion-label>
         <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
 
@@ -27,13 +27,13 @@
       <!--</div>-->
 
       <ion-item>
-        <ion-label floating>Nome</ion-label>
+        <ion-label floating>{{'profile.name' | translate}}</ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
 
       <!-- [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }" -->
       <ion-item>
-        <ion-label floating>Senha</ion-label>
+        <ion-label floating>{{'profile.password' | translate}}</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
@@ -47,7 +47,7 @@
 
       <ion-row>
         <button ion-button block color="light" class="login-btn" type="submit" [disabled]="!form.valid">
-          CADASTRAR
+          {{'login_signup-page.btn.signup' | translate}}
         </button>
       </ion-row>
 
@@ -71,7 +71,7 @@
 
       <ion-row>
         <div class="create-account" text-center>
-          <span (click)="goToLogin()">Já tenho uma conta</span>
+          <span (click)="goToLogin()">{{'login_signup-page.label.have_acoount' | translate}}</span>
         </div>
       </ion-row>
 

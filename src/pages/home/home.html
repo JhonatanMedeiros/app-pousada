@@ -4,7 +4,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Inicio</ion-title>
+    <ion-title>{{'toolbar.home' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -24,12 +24,12 @@
 
     <ion-item (click)="logout()" *ngIf="auth.authenticated">
       <ion-icon name="log-out" item-left color="primary-dark"></ion-icon>
-      <span ion-text color="dark">Sair</span>
+      <span ion-text color="dark">{{'home-page.label.exit' | translate}}</span>
     </ion-item>
 
     <ion-item (click)="login()" *ngIf="!auth.authenticated">
       <ion-icon name="log-in" item-left color="primary-dark"></ion-icon>
-      <span ion-text color="dark">Entrar</span>
+      <span ion-text color="dark">{{'home-page.label.login' | translate}}</span>
     </ion-item>
 
   </ion-list>

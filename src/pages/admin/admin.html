@@ -4,7 +4,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Administração</ion-title>
+    <ion-title>{{'toolbar.administration' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,34 +13,32 @@
 <ion-content>
 
   <ion-card>
-    <ion-card-header>
-      Gerência
-    </ion-card-header>
+    <ion-card-header>{{'pages.admin.management' | translate}}</ion-card-header>
 
     <ion-list>
       <button ion-item (click)="goToPage()">
         <ion-icon name="home" item-start color="primary-dark"></ion-icon>
-        <span ion-text color="dark">Quartos</span>
+        <span ion-text color="dark">{{'pages.admin.bedrooms' | translate}}</span>
       </button>
 
       <button ion-item disabled>
         <ion-icon name="book" item-start color="primary-dark"></ion-icon>
-        <span ion-text color="dark">Reservas</span>
+        <span ion-text color="dark">{{'pages.admin.reserve' | translate}}</span>
       </button>
 
       <button ion-item disabled>
         <ion-icon name="people" item-start color="primary-dark"></ion-icon>
-        <span ion-text color="dark">Usuários</span>
+        <span ion-text color="dark">{{'pages.admin.members' | translate}}</span>
       </button>
 
       <button ion-item disabled>
         <ion-icon name="hammer" item-start color="primary-dark"></ion-icon>
-        <span ion-text color="dark">Configurações da pousada</span>
+        <span ion-text color="dark">{{'pages.admin.hostel-settings' | translate}}</span>
       </button>
 
       <button ion-item (click)="signOut()">
         <ion-icon name="exit" item-start color="primary-dark"></ion-icon>
-        <span ion-text color="dark">Sair</span>
+        <span ion-text color="dark">{{'pages.admin.exit' | translate}}</span>
       </button>
 
     </ion-list>
