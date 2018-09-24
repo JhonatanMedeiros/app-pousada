@@ -27,6 +27,23 @@
         <ion-option value="pt">{{'configuration-page.label.pt-BR' | translate}}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item>
+      <ion-label>{{'configuration-page.label.currency' | translate}}</ion-label>
+      <ion-select
+        [(ngModel)]="currency"
+        [cancelText]="'configuration.label.cancelText' | translate"
+        [okText]="'configuration.label.okText' | translate"
+      >
+        <ion-option value="brl">Real Brasileiro - BRL</ion-option>
+        <ion-option value="eur">Euro - EUR</ion-option>
+        <ion-option value="usd">Dólar Americano - USD</ion-option>
+        <ion-option value="jpy">Iene Japonês - JPY</ion-option>
+        <ion-option value="gbp">Libra Esterlina - GBP</ion-option>
+        <ion-option value="chf">Franco Suíço - CHF</ion-option>
+        <ion-option value="cad">Dólar Canadense - CAD</ion-option>
+        <ion-option value="aud">Dólar Australiano - AUD</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
 
 </ion-content>

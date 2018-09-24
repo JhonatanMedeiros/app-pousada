@@ -12,6 +12,8 @@ export class ConfigurationPage {
 
   language: string = this.translateStorageService.current_lang;
 
+  currency: string = 'brl';
+
   constructor(private translateStorageService: TranslateStorageProvider) { }
 
   changeLanguage(): void {

@@ -10,7 +10,8 @@
 			"en-US": "Inglês - US",
 			"language": "Idioma",
 			"pt-BR": "Português - BR",
-			"user-settings": "Configurações do usuário"
+			"user-settings": "Configurações do usuário",
+      "currency": "Moeda"
 		}
 	},
 	"home-page": {

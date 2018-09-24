@@ -10,7 +10,8 @@
 			"en-US": "English - US",
 			"language": "Language",
 			"pt-BR": "Portuguese - BR",
-			"user-settings": "User Settings"
+			"user-settings": "User Settings",
+      "currency": "Currency"
 		}
 	},
 	"home-page": {
