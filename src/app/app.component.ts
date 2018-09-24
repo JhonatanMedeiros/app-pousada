@@ -66,7 +66,8 @@ export class MyApp implements OnInit, OnDestroy {
             const toast = this.toastCtrl.create({
               message: 'Nova atualização disponível! Recarregue o aplicativo para ver as últimas alterações.',
               position: 'bottom',
-              showCloseButton: true
+              showCloseButton: true,
+              closeButtonText: 'FECHAR'
             });
             toast.present();
           }
