@@ -10,7 +10,9 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "deploy-firebase": "ionic build --prod && firebase deploy --only hosting",
-    "ionic-serve": "ionic serve --no-devapp --local --no-open"
+    "ionic-serve": "ionic serve --no-devapp --local --no-open",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -49,7 +51,8 @@
     "moment": "^2.22.2",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.11",
@@ -76,5 +79,6 @@
     "platforms": [
       "android"
     ]
-  }
+  },
+  "snyk": true
 }
