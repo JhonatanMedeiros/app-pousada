@@ -42,7 +42,7 @@
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sqlite-storage": "^2.4.0",
-    "firebase": "^5.4.2",
+    "firebase": "^7.14.0",
     "ion2-calendar": "^2.2.0",
     "ionic-angular": "3.9.2",
     "ionicons": "^3.0.0",
